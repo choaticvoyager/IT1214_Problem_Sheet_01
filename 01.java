@@ -77,7 +77,7 @@ class Classroom{
 	}
 }
 
-class Main{	
+class ClassroomDemo{	
 	public static void main(String[] args){
 		Classroom c1=new Classroom();
 		c1.addStudent(101,"Alice Smith",12);
