@@ -4,7 +4,7 @@ class Student{
 	private int exam2;
 	private int exam3;
 	
-	Student(String name, int exam1, int exam2, int exam3)throws Exception{
+	Student(String name, int exam1, int exam2, int exam3){
 		this.name=name;
 		if(exam1>=0 && exam1<=100){
 			this.exam1=exam1;
@@ -44,7 +44,7 @@ class Student{
 	}
 	
 	public double calculateAverage(){
-		return (exam1+exam2+exam3)/3;
+		return (exam1+exam2+exam3)/3.0;
 	}
 }
 
