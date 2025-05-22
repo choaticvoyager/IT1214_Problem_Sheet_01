@@ -81,7 +81,7 @@ class ParkingLot{
 	}
 } 
 
-class Main{
+class ParkingDemo{
 	public static void main(String[] args){
 		ParkingLot lot1=new ParkingLot();
 		lot1.addVehicle("ABC123","John Doe",2);

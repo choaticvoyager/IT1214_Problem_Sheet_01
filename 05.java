@@ -4,39 +4,26 @@ class Student{
 	private int exam2;
 	private int exam3;
 	
-	boolean validateMarks(int marks){
-		if(marks<=100 && marks>=0)throws Exception{
-			return true;
-		}
-		else{
-			return false;
-			throw new Exception("Exception");
-		}
-	}
-	
 	Student(String name, int exam1, int exam2, int exam3)throws Exception{
 		this.name=name;
-			if(validateMarks(exam1)){
-				this.exam1=exam1;
-			}
-			else{
-				System.out.println("Exam scores must be between 0 and 100.");
-				throw new Exception("Setting the marks value to 0");
-			}
-			if(validateMarks(exam2)){
-				this.exam2=exam2;
-			}
-			else{
-				System.out.println("Exam scores must be between 0 and 100.");
-				throw new Exception("Setting the marks value to 0");
-			}
-			if(validateMarks(exam3)){
-				this.exam3=exam3;
-			}
-			else{
-				System.out.println("Exam scores must be between 0 and 100.");
-				throw new Exception("Setting the marks value to 0");
-			}
+		if(exam1>=0 && exam1<=100){
+			this.exam1=exam1;
+		}
+		else{
+			throw new IllegalArgumentException("Exam 1 score must be between 0 and 100.");
+		}
+		if(exam2>=0 && exam2<=100){
+			this.exam2=exam2;
+		}
+		else{
+			throw new IllegalArgumentException("Exam 2 score must be between 0 and 100.");
+		}
+		if(exam3>=0 && exam3<=100){
+			this.exam3=exam3;
+		}
+		else{
+			throw new IllegalArgumentException("Exam 3 score must be between 0 and 100.");
+		}
 	} 
 	
 	public String getName(){
@@ -63,15 +50,32 @@ class Student{
 
 class StudentDemo{	
 	public static void main(String[] args){
-		Student s1;
+		//For invalid exam scores
+		Student s1=null;
 		try{
 			s1=new Student("John",75,110,90);
 		}
 		catch(Exception e){
 			System.out.println("Error: "+e.getMessage());
 		}
-		System.out.println("Name: "+s1.getName()+"\nExam 1: "+s1.getExam1()+"\nExam 2: "+s1.getExam2()+"\nExam 3: "+s1.getExam3());
-		System.out.println(s1.getName()+"'s Average: "+s1.calculateAverage());
-
+		if(s1!=null){
+			System.out.println("Name: "+s1.getName()+"\nExam 1: "+s1.getExam1()+"\nExam 2: "+s1.getExam2()+"\nExam 3: "+s1.getExam3());
+			System.out.print(s1.getName()+"'s Average: ");
+			System.out.printf("%.2f%n",s1.calculateAverage());
+		}
+		
+		//For valid input
+		Student s2=null;		
+		try{
+			s2=new Student("Kane",87,65,78);
+		}
+		catch(Exception e){
+			System.out.println("Error: "+e.getMessage());
+		}		
+		if(s2!=null){
+			System.out.println("Name: "+s2.getName()+"\nExam 1: "+s2.getExam1()+"\nExam 2: "+s2.getExam2()+"\nExam 3: "+s2.getExam3());
+			System.out.print(s2.getName()+"'s Average: ");
+			System.out.printf("%.2f%n",s2.calculateAverage());
+		}
 	}
 }
